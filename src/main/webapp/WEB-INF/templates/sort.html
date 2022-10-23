@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一本糊涂账</title>
+    <!-- 引入 layui.css -->
+    <link href="static/layui/css/layui.css" rel="stylesheet">
+</head>
+<style>
+  .layui-header, .layui-body{
+    margin: 0 auto;
+    width: 700px;
+  }
+  .layui-body {
+    height: 700px;
+    left: 0px;
+  }
+</style>
+<body>
+  <div class="layui-layout ">
+    <div class="layui-header">
+      <!-- 头部区域（可配合layui 已有的水平导航） -->
+      <div th:replace = "common :: common_header"></div>
+      <!-- 头部区域 结束 -->
+    </div>
+    <div class="layui-body">
+      <!-- 内容主体区域 -->
+      <table class="layui-table">
+        <colgroup>
+          <col width="290">
+          <col width="290">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>分类名称</th>
+            <th>消费次数</th>
+            <th>操作 
+                <a  id="noti" type="button" class="layui-btn layui-btn-primary layui-btn-sm layui-border-green"
+                  style="margin-left:8px ;">
+                  <i class="layui-icon">&#xe654;</i>
+                </a>
+            </th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr th:each="node:${categoryMap}">
+            <td th:text="${node.name}">餐饮</td>
+            <td th:text="${node.recordList.size}">33</td>
+            <td>
+              <div class="layui-btn-group" >
+                <!--<a href="#" type="button" class="layui-btn layui-btn-primary layui-btn-sm layui-border-blue">-->
+                <!--  <i class="layui-icon">&#xe642;</i>-->
+                <!--</a>-->
+                <a th:href="|@{/sort/delete(id=${node.id})}|" type="button" class="layui-btn layui-btn-primary layui-btn-sm layui-border-red">
+                  <i class="layui-icon">&#xe640;</i>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 内容主体区域 结束-->
+    </div>
+    
+  
+  </div>
+      
+</body>
+ <!-- 引入 layui.js -->
+ <script src="static/layui/layui.js"></script>
+ <script>
+   //触发事件
+   let noti = document.getElementById('noti');
+   noti.onclick = () => {
+     layer.open({
+       type: 1
+       ,title: '添加分类名称：'
+       ,closeBtn: 2
+       ,area: ['260px','130px']
+       ,scrollbar :false
+       ,id: 'LAY_layuipro'
+       ,btnAlign: 'c'
+       ,content: '<form class="layui-form layui-form-pane" action="http://localhost:8080/hutubill/sort/add" ><input type="text" name="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off" class="layui-input"><button class="layui-btn" lay-submit>立即提交</button><button type="reset" class="layui-btn layui-btn-primary">重置</button></form>'
+     });
+   }
+ </script>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exercise.hutubill.mapper.CategoryMapper">
+
+    <!--void addCategoryByName(String name);-->
+    <insert id="addCategoryByName"  >
+        INSERT INTO category VALUES(null, #{name})
+    </insert>
+
+    <!--void deleteCategoryById(@Param("id") Integer id);-->
+    <delete id="deleteCategoryById">
+        DELETE FROM category WHERE id = #{id}
+    </delete>
+
+    <!--Map<String, List<Category>> getAllCategoryNameAndCount();-->
+    <select id="getAllCategoryNameAndCount"  resultMap="categoryMap" >
+        SELECT * FROM category
+    </select>
+    <resultMap id="categoryMap" type="category">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="recordList"  ofType="record"
+                    column="id" select="com.exercise.hutubill.mapper.RecordMapper.getRecordBySortId">
+        </collection>
+    </resultMap>
+</mapper>

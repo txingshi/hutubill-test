@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一本糊涂账</title>
+    <!-- 引入 layui.css -->
+    <link href="static/layui/css/layui.css" rel="stylesheet">
+</head>
+<style>
+  .layui-header, .layui-body{
+    margin: 0 auto;
+    width: 700px;
+  }
+  .layui-body {
+    height: 700px;
+    left: 0px;
+  }
+</style>
+<body>
+  <div class="layui-layout ">
+    <div class="layui-header">
+      <!-- 头部区域（可配合layui 已有的水平导航） -->
+      <div th:replace = "common :: common_header"></div>
+      <!-- 头部区域 结束 -->
+    </div>
+    <div class="layui-body">
+      <!-- 内容主体区域 -->
+      <form class="layui-form" action="set.html" method="get">
+          <i style="color: red">[[${msg}]]</i>
+        <div class="layui-form-item">
+            <label class="layui-form-label">本月预算(￥)</label>
+            <div class="layui-input-block">
+            <input type="text" name="budget" required  lay-verify="required" placeholder="请输入消费（数字或小数）" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+      </form>
+  </div>
+    
+  
+  </div>
+      
+</body>
+ <!-- 引入 layui.js -->
+ <script src="static/layui/layui.js"></script>
+<script>
+    // let msg = `${msg}`
+</script>
+</html>

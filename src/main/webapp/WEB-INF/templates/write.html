@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一本糊涂账</title>
+    <!-- 引入 layui.css -->
+    <link href="static/layui/css/layui.css" rel="stylesheet">
+</head>
+
+<style>
+  .layui-header, .layui-body{
+    margin: 0 auto;
+    width: 700px;
+  }
+  .layui-body {
+    height: 700px;
+    left: 0px;
+  }
+</style>
+<body>
+  <div class="layui-layout ">
+    <div class="layui-header">
+      <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <div th:replace = "common :: common_header"></div>
+      <!-- 头部区域 结束 -->
+    </div>
+    <div class="layui-body">
+      <!-- 内容主体区域 -->
+        <form class="layui-form layui-form-pane" th:action="@{/write}" method="post">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">花费(￥)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="spend" required lay-verify="required|number" placeholder="请输入消费" autocomplete="off"
+                           class="layui-input">
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">消费类型</label>
+                    <div class="layui-input-block">
+                        <select name="cid" lay-verify="required" >
+                            <option value=""></option>
+                            <tr th:each="list:${categoryList}">
+                                <option th:value="${list.id}" th:text="${list.name}">餐饮</option>
+                            </tr>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="comment" required lay-verify="required" placeholder="请输入备注" autocomplete="off"
+                               class="layui-input">
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">日期</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="date" class="layui-input" id="toDay" required lay-verify="required|date">
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+      <!-- 内容主体区域结束 -->
+    </div>
+  </div>  
+</body>
+<!-- 引入 layui.js -->
+<script src="static/layui/layui.js"></script>
+<!--<script src="static/js/axios.min.js"></script>-->
+<script>
+    //执行一个laydate实例
+    layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var form = layui.form;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#toDay', //指定元素
+        });
+        // form.on('submit(formDemo)', function (data) {
+        //     console.log(data.field)
+        //     axios.post('http://localhost:8080/hutubill/write', data.field)
+        //     return false
+        // });
+    });
+</script>
+
+</html>

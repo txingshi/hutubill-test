@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一本糊涂账</title>
+    <!-- 引入 layui.css -->
+    <link href="static/layui/css/layui.css" rel="stylesheet">
+</head>
+<style>
+  .layui-header, .layui-body{
+    margin: 0 auto;
+    width: 700px;
+  }
+  .layui-body {
+    height: 700px;
+    left: 0px;
+  }
+</style>
+<body>
+  <div class="layui-layout ">
+    <div class="layui-header">
+      <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <div th:replace = "common :: common_header"></div>
+      <!-- 头部区域 结束 -->
+    </div>
+    <div class="layui-body">
+      <!-- 内容主体区域 -->
+      <a href="#" class="layui-btn layui-btn-radius layui-btn-normal">点击备份</a>
+    </div>
+    
+  
+  </div>
+      
+</body>
+ <!-- 引入 layui.js -->
+ <script src="static/layui/layui.js"></script>
+</html>

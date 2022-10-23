@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div th:fragment="common_header" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+          <li class="layui-this" index="1"><a th:href="@{/overview}" >消费一览</a></li>
+          <li index="2"><a th:href="@{/write}" >记一笔</a></li>
+          <li index="3"><a th:href="@{/sort}" >消费分类</a></li>
+          <li index="4"><a th:href="@{/monthexpense}" >月消费报表</a></li>
+          <li index="5"><a th:href="@{/}" >设置</a></li>
+          <li index="6"><a th:href="@{/backups}" >备份</a></li>
+          <li index="7"><a th:href="@{/recover}" >恢复</a></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+      </div>
+</body>
+</html>

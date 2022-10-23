@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一本糊涂账</title>
+    <!-- 引入 layui.css -->
+    <link href="static/layui/css/layui.css" rel="stylesheet">
+</head>
+<style>
+  .layui-header, .layui-body{
+    margin: 0 auto;
+    width: 700px;
+  }
+  .layui-body {
+    height: 700px;
+    left: 0px;
+  }
+  /* 柱状图的样式 */
+.map_made {
+          display: flex;
+          width: 700px;
+          height: 300px;
+          border-left: 1px solid pink;
+          border-bottom: 1px solid pink;
+          margin: 50px auto;
+          justify-content: space-around;
+          align-items: flex-end;
+          text-align: center;
+      }
+
+.map_made>.map_column {
+    display: flex;
+    width: 50px;
+    background-color: pink;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.map_made .map_column .column_num {
+    margin-top: -20px;
+}
+
+.map_made .map_column .column_content {
+    margin-bottom: -35px;
+    width: 70px;
+    margin-left: -10px;
+}
+</style>
+<body>
+  <div class="layui-layout ">
+    <div class="layui-header">
+      <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <div th:replace = "common :: common_header"></div>
+      <!-- 头部区域 结束 -->
+    </div>
+    <div class="layui-body">
+      <!-- 内容主体区域 -->
+      <h1 style="text-align:center ;">月消费报表</h1>
+        <p>花费（元）</p>
+      <div class = "map_made">
+          <tr th:each="listaa:${list}" >
+              <div class="map_column" th:style="|height: ${listaa.get('spend')}px;|">
+                  <span class="column_num" th:text="${listaa.get('spend')}">123</span>
+                  <h4 class="column_content" th:text="${listaa.get('date')}">1</h4>
+              </div>
+          </tr>
+          <div class="map_column" >
+              <span class="column_num"></span>
+              <h4 class="column_content">号</h4>
+          </div>
+      </div>
+
+        
+      </div>	
+      <!-- 内容主体区域 结束-->
+    </div>
+    
+  
+  </div>
+      
+</body>
+ <!-- 引入 layui.js -->
+ <script src="static/layui/layui.js"></script>
+</html>
