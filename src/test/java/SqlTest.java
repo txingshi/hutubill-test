@@ -1,30 +1,24 @@
 import com.exercise.hutubill.mapper.CategoryMapper;
 import com.exercise.hutubill.mapper.RecordMapper;
 import com.exercise.hutubill.pojo.Category;
-import com.exercise.hutubill.pojo.Record;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestConstructor;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @author LuckyMi
- * @sine 2022/9/21 15:05
+ *  2022/9/21 15:05
  */
 
 @ContextConfiguration(locations = { "classpath:spring.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-public class sqlTest {
+public class SqlTest {
 
     @Autowired
     CategoryMapper categoryMapper;
