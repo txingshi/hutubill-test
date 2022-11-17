@@ -1,12 +1,10 @@
 package com.exercise.hutubill.controller;
 
-import com.exercise.hutubill.pojo.Record;
 import com.exercise.hutubill.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
@@ -14,15 +12,16 @@ import javax.servlet.http.HttpSession;
 /**
  * 消费一览页面
  * @author LuckyMi
- * @sine 2022/9/19 15:57
+ * 2022/9/19 15:57
  */
 @Controller
-public class overViewController {
+public class OverViewController {
 
     @Autowired
     RecordService recordService;
-
-    //设置预算的页面跳转和 业务跳转
+    /**
+     *设置预算的页面跳转和 业务跳转
+     */
     @GetMapping("/set.html")
     public String setBudget(@RequestParam("budget") double budget
                             , HttpSession session
@@ -34,7 +33,12 @@ public class overViewController {
         return "redirect:overview";
     }
 
-    //消费一览的页面跳转
+    /**
+     * 消费一览的页面跳转
+     * @param session session
+     * @param model model
+     * @return 视图跳转
+     */
     @GetMapping("/overview")
     public String toOverView(HttpSession session, Model model){
 
